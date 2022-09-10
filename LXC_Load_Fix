@@ -1,0 +1,22 @@
+Credit: https://www.reddit.com/r/pihole/comments/thdqq8/comment/iiei65y/?utm_source=share&utm_medium=web2x&context=3
+Shutdown any running containers, then from the host shell
+
+nano /lib/systemd/system/lxcfs.service
+
+Append the ExecStart=/usr/bin/lxcfs /var/lib/lxcfs with -l (lowercase L)
+
+[Service]
+
+ExecStart=/usr/bin/lxcfs /var/lib/lxcfs -l
+
+Save and exit the file
+
+Restart lxcfs.service
+
+service lxcfs restart
+
+Startup your containers
+
+Additional notes:
+
+You can see the info for lxcfs service via command man lxcfs
